@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
-
   devise_for :artists
-  root 'dashboard#index'
+  resources :artists, only: [:show, :index]
+  root 'artists#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
