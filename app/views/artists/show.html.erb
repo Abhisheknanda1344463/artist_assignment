@@ -1,0 +1,50 @@
+<%= form_for @artist, url: registration_path(@artist), html: { method: :put } do |f| %>
+  <% if @artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this pet from being saved:</h2>
+ 
+      <ul>
+      <% @artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="field">
+    <%= f.label :Profile_picture %><br>
+    <%= f.file_field :profile_picture %>
+  </div>
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+<br><br>
+  <%= link_to 'Edit profile', edit_artist_registration_path, :class => 'navbar-link' %> |
+
+
+<br><br>
+<%= form_for @artist, url: registration_path(@artist), html: { method: :put } do |f| %>
+  <%= f.fields_for :paintings do |p| %>
+     <div class="field">
+       <%= p.label :painting %><br>
+       <%= p.file_field :painting, :multiple => true, name: "painting[image][]" %>
+     </div>
+   <% end %>
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end%>
