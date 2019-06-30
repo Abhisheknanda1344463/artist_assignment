@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190630105108) do
+ActiveRecord::Schema.define(version: 20190630111728) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name",                                null: false
@@ -32,5 +32,15 @@ ActiveRecord::Schema.define(version: 20190630105108) do
 
   add_index "artists", ["email"], name: "index_artists_on_email", unique: true
   add_index "artists", ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
+
+  create_table "paintings", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.string   "picture"
+    t.boolean  "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "paintings", ["artist_id"], name: "index_paintings_on_artist_id"
 
 end
