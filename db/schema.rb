@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20190630105108) do
     t.string   "city",                                null: false
     t.string   "country",                             null: false
     t.string   "username",                            null: false
+    t.string   "about"
+    t.string   "profile_picture"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
