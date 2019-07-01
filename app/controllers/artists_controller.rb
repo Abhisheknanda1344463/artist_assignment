@@ -6,11 +6,6 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @paintings = @artist.paintings
   end
-  
-  def add_painting
-    debugger
-  end
-
 end
-

@@ -3,7 +3,7 @@ class CreatePaintings < ActiveRecord::Migration
     create_table :paintings do |t|
       t.references :artist, index: true
       t.string :picture
-      t.boolean :public
+      t.boolean :public, :default => false
 
       t.timestamps null: false
     end

@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20190630111728) do
   create_table "paintings", force: :cascade do |t|
     t.integer  "artist_id"
     t.string   "picture"
-    t.boolean  "public"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "public",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "paintings", ["artist_id"], name: "index_paintings_on_artist_id"

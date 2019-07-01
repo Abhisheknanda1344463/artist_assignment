@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :artists do
+  devise_for :artists
+  resources :artists, :only => [:index, :show] do
     resources :paintings
   end
 

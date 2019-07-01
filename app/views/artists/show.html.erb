@@ -1,47 +1,78 @@
-<%= form_for @artist, url: registration_path(@artist), html: { method: :put } do |f| %>
-  <% if @artist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this pet from being saved:</h2>
+<nav class="navbar navbar-light bg-light nav-bottom">
+  <a class="navbar-brand" href="/">LOGO</a>
+  <form class="form-inline">
+    <% if artist_signed_in? %>
+      Welcome<strong><%= current_artist.name %></strong>
+      &nbsp;|&nbsp;
+      <i><u><%= link_to "Sign out", destroy_artist_session_path, method: :delete%></u></i>
+    <% else %>
+      <u><i><%= link_to "Sign in", new_artist_session_path%></i></u>
+    <% end %>
+  </form>
+</nav>
+<br>
 
-      <ul>
-      <% @artist.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div class="row mx-1">
+  <div class="col-md-3">
+    <%= image_tag @artist.profile_picture_url, class: "profileimage" %>
+  </div>
+  <div clas ="col-md-9">
+    <%= link_to 'Edit profile', edit_artist_registration_path, :class => 'navbar-link' %>
+  </div>
+</div>
+<div class ="clearfix"></div>
+
+<div class="row mx-1">
+  <div class="col-md-3">
+    <%= form_for @artist, url: registration_path(@artist), html: { method: :put } do |f| %>
+      <div class="field">
+        <%= f.file_field :update_profile_picture %>
+      </div>
+      <div class="field">
+        <%= f.password_field :current_password, autocomplete: "current-password" %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-9">
+  </div>
+</div>
+<div class ="clearfix"></div>
+
+<hr class="profile-break">
+
+<div class="row mx-1">
+  <% @paintings.each_with_index do |painting,index| %>
+    <% if(index % 4) == 0 %>
+      <div class="clearfix"></div>
+      <div class="col-sm-3 col-md-3 image-container">
+        <%= image_tag painting.picture_url, class: "detailimage" %>
+        <p class="artistnamelink">
+          <u><%= link_to "Painting_#{index}", "" %></u>
+        </p>
+      </div>
+    <% else %>
+      <div class="col-sm-3 col-md-3 image-container">
+        <%= link_to image_tag painting.picture_url, class: "detailimage"%>
+        <p class="artistnamelink">
+          <u><%= link_to "Painting_#{index}", "" %></u>
+        </p>
+      </div>
+    <% end %>
   <% end %>
+</div>
+<br>
 
-  <div class="field">
-    <%= f.label :Profile_picture %><br>
-    <%= f.file_field :profile_picture %>
-  </div>
+<br>
+<br>
+<br>
+<br>
+<%= form_for [@artist, @artist.paintings.build] do |f| %>
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <%= f.file_field :picture %>
     </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
-
-<br><br>
-  <%= link_to 'Edit profile', edit_artist_registration_path, :class => 'navbar-link' %> |
-
-
-<br><br>
-<%= form_for[@artist, current_artist.paintings.build], url: registration_path(@artist), html: { method: :put } do |f| %>
-    <div class="field">
-      <%= f.label :Painting %><br>
-      <%= f.file_field :painting %>
-    </div>
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
