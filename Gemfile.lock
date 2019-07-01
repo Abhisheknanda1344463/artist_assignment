@@ -37,9 +37,15 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.4)
+    autoprefixer-rails (9.6.0)
+      execjs
     bcrypt (3.1.13)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootstrap (4.0.0)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (11.0.1)
     carrierwave (0.10.0)
@@ -55,6 +61,13 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    countries (3.0.0)
+      i18n_data (~> 0.8.0)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (4.0.0)
+      countries (~> 3.0)
+      sort_alphabetical (~> 1.0)
     crass (1.0.4)
     debug_inspector (0.0.3)
     devise (4.6.2)
@@ -70,6 +83,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.8.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -92,6 +106,7 @@ GEM
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    popper_js (1.14.5)
     rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -141,6 +156,9 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sixarm_ruby_unaccent (1.2.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     sprockets (3.7.2)
@@ -161,6 +179,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    unicode_utils (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -173,9 +192,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap (~> 4.0.0)
   byebug
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
+  country_select (~> 4.0)
   devise
   jbuilder (~> 2.0)
   jquery-rails
