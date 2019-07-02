@@ -1,23 +1,30 @@
 <%= render partial: "nav" %>
 <br>
-
 <div class="row mx-1">
   <div class="col-md-3">
     <%= image_tag @artist.profile_picture_url, class: "profileimage" %>
   </div>
   <div clas ="col-md-9">
-    <%= link_to 'Edit profile', edit_artist_registration_path, :class => 'navbar-link' %>
+    <div class="row">
+      <div class="col-6">
+        <h2><%= @artist.name %></h2>
+        <h6><%= "#{@artist.city}, #{@artist.country}" %></h6>
+      </div>
+      <div class="col-6"><u><i><%= link_to 'Edit profile', edit_artist_registration_path, :class => 'pull-right' %></i></u></div>
+    </div>
+    <% unless @artist.about.nil? %>
+      <p><%= @artist.about[0..50] %></p>
+    <% end %>  
+    <p class="pull-right">
+      <%= "#{@artist.email} | #{@artist.phone}"%>
+    </p>
   </div>
 </div>
 <div class ="clearfix"></div>
 
 <div class="row mx-1">
   <div class="col-md-3">
-    <%= form_for @artist, url: registration_path(@artist), html: { method: :put } do |f| %>
-        <%= f.file_field :profile_picture %>
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
-        <%= f.submit %>
-    <% end %>
+    <%= render partial: "profile_picture_form" %>
   </div>
   <div class="col-md-9">
   </div>
@@ -25,6 +32,8 @@
 <div class ="clearfix"></div>
 
 <hr class="profile-break">
+
+<%= render partial: "add_painting" %>
 
 <div class="row mx-1">
   <% @paintings.each_with_index do |painting,index| %>
@@ -46,17 +55,3 @@
     <% end %>
   <% end %>
 </div>
-<br>
-
-<br>
-<br>
-<br>
-<br>
-<%= form_for [@artist, @artist.paintings.build] do |f| %>
-    <div class="field">
-      <%= f.file_field :picture %>
-    </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end%>

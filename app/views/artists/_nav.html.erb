@@ -4,7 +4,7 @@
     <% if artist_signed_in? %>
       Welcome<strong><%= current_artist.name %></strong>
       &nbsp;|&nbsp;
-      <i><u><%= link_to "Log out", destroy_artist_session_path, method: :delete%></u></i>
+      <i><u><%= link_to "Sign out", destroy_artist_session_path, method: :delete%></u></i>
     <% else %>
       <a href="#" data-toggle="modal" data-target="#sign_in"><i>Sign in</i></a></u>
       <%= render partial: "sign_in" %>
