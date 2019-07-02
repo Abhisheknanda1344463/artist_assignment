@@ -1,17 +1,4 @@
-<%= render partial: "new" %>
-
-<nav class="navbar navbar-light bg-light nav-bottom">
-  <a class="navbar-brand" href="/">LOGO</a>
-  <form class="form-inline">
-    <% if artist_signed_in? %>
-      Welcome<strong><%= current_artist.name %></strong>
-      &nbsp;|&nbsp;
-      <i><u><%= link_to "Log out", destroy_artist_session_path, method: :delete%></u></i>
-    <% else %>
-      <u><i><%= link_to "Sign in", new_artist_session_path, id:"sign_up", "data-target"=>"sign_up", "data-toggle"=>"modal"%></i></u>
-    <% end %>
-  </form>
-</nav>
+<%= render partial: "nav" %>
 <br>
 <div class="row mx-2">
   <% @artists.each_with_index do |artist,index| %>

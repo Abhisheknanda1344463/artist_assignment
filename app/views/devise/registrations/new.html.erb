@@ -1,58 +1,50 @@
-
-<h2>Modal Example</h2>
-<!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign_up">
-  Open modal
-</button>
+<a href="#" class="" data-toggle="modal" data-target="#sign_up"><i>Sign up</i></a>
 <div class="modal" id="sign_up">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-         <h4 class="modal-title">Modal Heading</h4>
+         <h6 class="modal-title">Sign up</h6>
          <button type="button" class="close" data-dismiss="modal">&times;</button>
-       </div>
-
-<div class="modal-body">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true%>
-    </div>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-    <div class="field">
-      <%= f.label :phone %><br />
-      <%= f.text_field :phone, autofocus: true%>
-    </div>
-    <div class="field">
-      <%= f.label :city %><br />
-      <%= f.text_field :city, autofocus: true%>
-    </div>
-    <div class="field">
-      <%= f.label :country %><br />
-      <%= f.country_select :country ,class: "dropdown" %>
-    </div>
-    <div class="field">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true%>
-    </div>
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-    </br>
-  </br>
-    <div class="modal-footer">
-      <%= f.submit "Register",class:"btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-</div>
-</div>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.label :name, "Name*" %><br />
+            <%= f.text_field :name, autofocus: true, class: "w-100" %>
+          </div><br />
+          <div class="field">
+            <%= f.label :email, "Email*" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-100" %>
+          </div><br />
+          <div class="field">
+            <%= f.label :phone, "Phone*" %><br />
+            <%= f.text_field :phone, autofocus: true, class: "w-100" %>
+          </div><br />
+          <div class="field">
+            <%= f.label :city, "City*" %><br />
+            <%= f.text_field :city, autofocus: true, class: "w-100" %>
+          </div><br />
+          <div class="field">
+            <%= f.label :country, "Country*" %><br />
+            <%= f.country_select :country ,class: "dropdown w-100" %>
+          </div><br />
+          <div class="field">
+            <%= f.label :username, "Username*" %><br />
+            <%= f.text_field :username, autofocus: true, class: "w-100" %>
+          </div><br />
+          <div class="field">
+            <%= f.label :password, "Password*" %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "w-100" %>
+          </div></br>
+          <div class="modal-footer">
+            <%= f.submit "Register",class:"w-100" %>
+          </div>
+        <% end %>
+      </div>
+    <div>
+  </div>
 </div>

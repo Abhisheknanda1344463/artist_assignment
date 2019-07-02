@@ -1,0 +1,29 @@
+<div class="modal" id="sign_in">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h6 class="modal-title">Sign in</h6>
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(Artist.new, as: :artist, url: session_path(:artist)) do |f| %>       
+          <div class="field">
+            <%= f.label :email%></br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-100"%>
+          </div><br />
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "w-100" %>
+          </div><br />
+          <div class="actions modal-footer">
+            <%= f.submit "Sign in",class:"w-100" %>
+          </div>
+       <a href="#" class="" data-toggle="modal" data-target="#sign_up"><i>New User? register here</i></a>
+       <%= render partial: "new" %>
+       <br>
+       <i><%= link_to "Forgot your password?", "#" %></i>
+       <% end %>
+      </div>
+    <div>
+  </div>
+</div>

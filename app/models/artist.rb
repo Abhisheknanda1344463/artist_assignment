@@ -5,6 +5,4 @@ class Artist < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :validatable
   has_many :paintings,dependent: :destroy
-
-  accepts_nested_attributes_for :paintings
 end
